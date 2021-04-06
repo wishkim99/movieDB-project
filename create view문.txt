@@ -1,0 +1,29 @@
+<create view¹®>
+mysql> create view actor_producer as
+    -> select a.aname, a.age, a.asex, a.assn
+    -> from actor a, producer p
+    -> where a.assn=p.pssn;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from actor_producer
+    -> ;
++--------+-----+------+-----------+
+| aname  | age | asex | assn      |
++--------+-----+------+-----------+
+| Alicia |  48 | F    | 998877665 |
++--------+-----+------+-----------+
+1 row in set (0.00 sec)
+
+mysql> create view actor_director as
+    -> select a.aname, a.age, a.asex, a.assn
+    -> from actor a, director d
+    -> where a.assn=d.dssn;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from actor_director;
++----------+-----+------+-----------+
+| aname    | age | asex | assn      |
++----------+-----+------+-----------+
+| Jennifer |  33 | F    | 121234343 |
++----------+-----+------+-----------+
+1 row in set (0.01 sec)

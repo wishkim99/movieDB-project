@@ -1,0 +1,199 @@
+<producer 스크립트>
+mysql> insert into producer
+    -> values('Alicia', '998877665', 48, 'F');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into producer
+    -> values('Ramesh', '111222333', 52, 'M');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into producer
+    -> values('Joyce', '444555666', 44, 'F');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into producer
+    -> values('Ahmad', '777888999', 35, 'M');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from producer;
++--------+-----------+------+------+
+| Pname  | Pssn      | Page | Psex |
++--------+-----------+------+------+
+| Ramesh | 111222333 |   52 | M    |
+| Joyce  | 444555666 |   44 | F    |
+| Ahmad  | 777888999 |   35 | M    |
+| Alicia | 998877665 |   48 | F    |
++--------+-----------+------+------+
+4 rows in set (0.00 sec)
+
+<director 스크립트>
+mysql> insert into director
+    -> values('James', '999888777', 37, 'M');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into director
+    -> values('Erica', '666555444', 50, 'F');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into director
+    -> values('Henry', '333222111', 29, 'M');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into director
+    -> values('Jennifer', '121234343', 33, 'F');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from director;
++----------+-----------+------+------+
+| Dname    | Dssn      | Dage | Dsex |
++----------+-----------+------+------+
+| Jennifer | 121234343 |   33 | F    |
+| Henry    | 333222111 |   29 | M    |
+| Erica    | 666555444 |   50 | F    |
+| James    | 999888777 |   37 | M    |
++----------+-----------+------+------+
+4 rows in set (0.00 sec)
+
+<actor 스크립트>
+mysql> insert into actor(Aname, Assn, Age, Asex)
+    -> values ('John', '123456789', 21,'M') ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into actor(Aname, Assn, Age, Asex)
+    -> values ('John', '123456789', 21,'M') ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into actor(Aname, Assn, Age, Asex)
+    -> values('Rucy', '987654321', 34, 'F');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into actor
+    -> values('Alicia', '998877665', 48,'F', '998877665', NULL);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into actor
+    -> values('Jennifer', '121234343', 33, 'F', NULL, '121234343');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from actor;
++----------+-----------+-----+------+-------------------+-------------------+
+| Aname    | Assn      | Age | Asex | Producer_Pssn(FK) | Director_Dssn(FK) |
++----------+-----------+-----+------+-------------------+-------------------+
+| Franklin | 112233445 |  63 | M    | NULL              | NULL              |
+| Jennifer | 121234343 |  33 | F    | NULL              | 121234343         |
+| John     | 123456789 |  21 | M    | NULL              | NULL              |
+| Rucy     | 987654321 |  34 | F    | NULL              | NULL              |
+| Alicia   | 998877665 |  48 | F    | 998877665         | NULL              |
++----------+-----------+-----+------+-------------------+-------------------+
+5 rows in set (0.00 sec)
+
+
+<movie 스크립트>
+mysql> insert into movie
+    -> values('coco', 'A111111', '2017-11-22', 2, 1, 1, '112233445', '999888777');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into movie
+    -> values('coco', 'A111112', '2017-11-22', 2, 1, 1, '123456789', '999888777');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into movie
+    -> values('car', 'B222222', '2004-05-25', 1, 1, 1, '987654321', '666555444');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into movie
+    -> value('lion king', 'C333333', '2011-09-03', 1,1,1,'998877665', '333222111');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into movie
+    -> value('Dumbo', 'D444444', '2007-10-16', 1, 1, 1, '121234343', '333222111');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into movie
+    -> value('toy story', 'E555555', '2013-08-13', 1, 1, 1, '987654321', '121234343');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from movie;
++-----------+---------+------------+----------------+---------+------------+------------+---------------+
+| Mname     | Mssn    | Date       | Lead_actor_num | Pro_num | Direct_num | Actor_Assn | Director_Dssn |
++-----------+---------+------------+----------------+---------+------------+------------+---------------+
+| coco      | A111111 | 2017-11-22 |              2 |       1 |          1 | 112233445  | 999888777     |
+| coco      | A111112 | 2017-11-22 |              2 |       1 |          1 | 123456789  | 999888777     |
+| car       | B222222 | 2004-05-25 |              1 |       1 |          1 | 987654321  | 666555444     |
+| lion king | C333333 | 2011-09-03 |              1 |       1 |          1 | 998877665  | 333222111     |
+| Dumbo     | D444444 | 2007-10-16 |              1 |       1 |          1 | 121234343  | 333222111     |
+| toy story | E555555 | 2013-08-13 |              1 |       1 |          1 | 987654321  | 121234343     |
++-----------+---------+------------+----------------+---------+------------+------------+---------------+
+6 rows in set (0.00 sec)
+
+<actor_has_movie 스크립트>
+mysql> insert into actor_has_movie
+    -> value('112233445', 'A111111');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into actor_has_movie
+    ->  value('123456789', 'A111112');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into actor_has_movie
+    -> values('987654321', 'B222222');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into actor_has_movie
+    -> value('998877665', 'C333333');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into actor_has_movie
+    -> value('121234343', 'D444444')
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into actor_has_movie
+    -> value('987654321', 'E555555');
+
+mysql> select * from actor_has_movie
+    -> ;
++------------+------------+
+| Actor_Assn | Movie_Mssn |
++------------+------------+
+| 112233445  | A111111    |
+| 123456789  | A111112    |
+| 987654321  | B222222    |
+| 998877665  | C333333    |
+| 121234343  | D444444    |
+| 987654321  | E555555    |
++------------+------------+
+6 rows in set (0.00 sec)
+
+<producer_has movie 스크립트>
+mysql> insert into producer_has_movie
+    -> value('998877665', 'A111112');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into producer_has_movie
+    -> value('111222333', 'B222222');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into producer_has_movie
+    -> value('444555666', 'C333333');
+Query OK, 1 row affected (0.01 sec)
+mysql> insert into producer_has_movie
+    -> value('777888999', 'D444444');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into producer_has_movie
+    -> value('777888999', 'E555555');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from producer_has_movie;
++---------------+------------+
+| Producer_Pssn | Movie_Mssn |
++---------------+------------+
+| 998877665     | A111111    |
+| 998877665     | A111112    |
+| 111222333     | B222222    |
+| 444555666     | C333333    |
+| 777888999     | D444444    |
+| 777888999     | E555555    |
++---------------+------------+
+6 rows in set (0.00 sec)
